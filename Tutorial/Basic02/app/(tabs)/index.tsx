@@ -1,12 +1,16 @@
 import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
+import { fetchMovieDetails, fetchMovies } from "@/services/api";
+import useFetch from "@/services/useFetch";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Image, ScrollView, View } from "react-native";
 
 const index = () => {
   const router = useRouter();
+
+  const {data: movies} = useFetch(() => fetchMovies({ query: "" }));
   return (
     <View className="flex-1 bg-primary ">
       <Image source={images.bg} className="absolute w-full z-0" />
